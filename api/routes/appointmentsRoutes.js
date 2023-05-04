@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const appointmentsController = require("../controllers/appointments_controller");
+const Branch = require("../models/branch")
+
 
 /**
  * @openapi
@@ -404,8 +406,9 @@ router.get("/lastAppointment/token", appointmentsController.getUserLastAppointme
 router.get("/:idApp/token", appointmentsController.getUserAppointmentById);
 router.get("/user-appointments/:number", appointmentsController.getAllUserAppointmentsById);
 
-router.get("/test", (req, res) => {
-    res.status(201).send("Test")
+router.get("/test", async (req, res) => {
+    const branchesNames = await Branch.find();
+    res.status(201).send(branchesNames)
 });
 
 
