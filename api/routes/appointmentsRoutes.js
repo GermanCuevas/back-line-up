@@ -404,6 +404,11 @@ router.get("/lastAppointment/token", appointmentsController.getUserLastAppointme
 router.get("/:idApp/token", appointmentsController.getUserAppointmentById);
 router.get("/user-appointments/:number", appointmentsController.getAllUserAppointmentsById);
 
+router.get("/test", (req, res) => {
+    res.status(201).send("Test")
+});
+
+
 /* router.get("/user-appointments/:number", async(req,res)=>{
     const number = req.params.number;
     const limit = number * 7;
